@@ -1,0 +1,70 @@
+{
+  "name": "my-vue-app",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite --mode development",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "lint": "eslint src/**/*.{js,jsx,vue,ts,tsx}",
+    "fix": "eslint src/**/*.{js,jsx,vue,ts,tsx} --fix",
+    "prettier": "prettier --write .",
+    "prepare": "husky install",
+    "commit": "git-cz"
+  },
+  "dependencies": {
+    "@types/qs": "^6.9.7",
+    "@vueuse/core": "^8.7.5",
+    "axios": "^0.27.2",
+    "element-plus": "^2.2.6",
+    "naive-ui": "^2.30.6",
+    "pinia": "^2.0.14",
+    "qs": "^6.11.0",
+    "vue": "^3.2.25",
+    "vue-request": "^1.2.4",
+    "vue-router": "^4.0.16"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "@types/node": "^18.0.0",
+    "@types/nprogress": "^0.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "@vitejs/plugin-legacy": "^1.8.2",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "@vue/eslint-config-typescript": "^11.0.0",
+    "commitizen": "^4.2.4",
+    "commitlint": "^17.0.3",
+    "commitlint-config-cz": "^0.13.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^6.6.0",
+    "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.1.0",
+    "eslint-plugin-vue": "^9.1.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "mrm": "^4.0.0",
+    "nprogress": "^0.2.0",
+    "prettier": "^2.7.1",
+    "sass": "^1.53.0",
+    "typescript": "^4.5.4",
+    "unplugin-element-plus": "^0.4.0",
+    "unplugin-vue-components": "^0.20.1",
+    "vite": "^2.9.9",
+    "vite-plugin-compression": "^0.5.1",
+    "vue-tsc": "^0.34.7"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue,ts,tsx}": [
+      "yarn fix",
+      "prettier --write"
+    ]
+  }
+}
