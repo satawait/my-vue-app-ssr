@@ -1,12 +1,8 @@
-// import axios from 'axios'
-import { createApp } from 'vue'
+import { createSSRApp } from 'vue'
 import App from './App.vue'
-import router from './routes'
-import store from './store'
 
-const app = createApp(App)
-// app.config.globalProperties.$http = axios
-// app.provide('$http', app.config.globalProperties.$http)
-app.use(router)
-app.use(store)
-app.mount('#app')
+// 为了保证数据的互不干扰，每次请求需要导出一个新的实例
+export const createApp = () => {
+  const app = createSSRApp(App)
+  return { app }
+}
