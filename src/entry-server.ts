@@ -3,14 +3,22 @@ import { renderToString } from '@vue/server-renderer'
 import { setup } from '@css-render/vue3-ssr'
 import { ParameterizedContext } from 'koa'
 import createMyRouter from '@/routes'
+import createStore from '@/store'
 
 export const render = async (ctx: ParameterizedContext, manifest: Record<string, string[]>) => {
   const { app } = createApp() // 路由注册
 
+  global.__VUE_SSR_COOKIE__ = ctx.cookies.get('authorization')
   const router = createMyRouter('server')
   app.use(router)
   await router.push(ctx.path)
   await router.isReady()
+
+  // pinia
+  const pinia = createStore()
+  app.use(pinia)
+  // pinia.state.value.user.username = 'test'
+  const state = JSON.stringify(pinia.state.value)
 
   // 注入vue ssr中的上下文对象
   const renderCtx: { modules?: string[] } = {}
@@ -20,7 +28,7 @@ export const render = async (ctx: ParameterizedContext, manifest: Record<string,
   const cssHtml = collect()
   const preloadLinks = renderPreLoadLinks(renderCtx.modules, manifest)
 
-  return { renderedHtml, preloadLinks, cssHtml }
+  return { renderedHtml, preloadLinks, cssHtml, state }
 }
 
 const renderPreLoadLinks = (

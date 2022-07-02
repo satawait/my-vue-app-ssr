@@ -17,11 +17,13 @@
   },
   "dependencies": {
     "@css-render/vue3-ssr": "^0.15.10",
+    "@types/js-cookie": "^3.0.2",
     "@types/qs": "^6.9.7",
     "@vue/server-renderer": "^3.2.37",
     "@vueuse/core": "^8.7.5",
     "axios": "^0.27.2",
     "element-plus": "^2.2.6",
+    "js-cookie": "^3.0.1",
     "koa": "^2.13.4",
     "koa-connect": "^2.1.0",
     "koa-send": "^5.0.1",

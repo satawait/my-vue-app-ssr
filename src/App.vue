@@ -1,13 +1,10 @@
 <template>
-  <!-- 必须要有这个根节点，否则会报错 -->
-  <div>
-    <n-config-provider :locale="zhCN" :theme="null">
-      <n-message-provider>
-        <n-menu :options="menuOptions" mode="horizontal" />
-        <RouterView />
-      </n-message-provider>
-    </n-config-provider>
-  </div>
+  <n-config-provider :locale="zhCN" :theme="null">
+    <n-message-provider>
+      <n-menu :options="menuOptions" mode="horizontal" />
+      <RouterView />
+    </n-message-provider>
+  </n-config-provider>
 </template>
 
 <script setup lang="ts">

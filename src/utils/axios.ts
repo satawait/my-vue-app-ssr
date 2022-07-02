@@ -8,6 +8,7 @@ import axios, {
 import NProgress from 'nprogress'
 import qs from 'qs'
 import createMyRouter from '@/routes'
+import Cookies from 'js-cookie'
 
 const CancelToken = axios.CancelToken
 const instance = axios.create()
@@ -95,6 +96,7 @@ class HttpRequest {
         } else if (res.status === 401) {
           if (!import.meta.env.SSR) {
             localStorage.removeItem('authorization')
+            Cookies.remove('authorization')
           }
           router.push({ name: 'Login' })
         } else {

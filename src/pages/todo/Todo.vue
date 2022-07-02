@@ -52,6 +52,7 @@ import { FormInst, FormItemRule, useMessage, FormRules } from 'naive-ui'
 import type { UploadFileInfo } from 'naive-ui'
 import * as user from '@/apis/user'
 import { useRouter } from 'vue-router'
+import Cookies from 'js-cookie'
 const size = 'large'
 const formRef = ref<FormInst | null>(null)
 const message = useMessage()
@@ -133,6 +134,7 @@ type handlerTypes = 'registerUser' | 'deleteUser' | 'updateUser' | 'getUser' | '
 const handleClick = (type: handlerTypes) => {
   if (type === 'logout') {
     localStorage.removeItem('authorization')
+    Cookies.remove('authorization')
     router.push({
       name: 'Login'
     })

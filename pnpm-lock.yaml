@@ -4,6 +4,7 @@ specifiers:
   '@commitlint/cli': ^17.0.3
   '@commitlint/config-conventional': ^17.0.3
   '@css-render/vue3-ssr': ^0.15.10
+  '@types/js-cookie': ^3.0.2
   '@types/koa': ^2.13.4
   '@types/node': ^18.0.0
   '@types/nprogress': ^0.2.0
@@ -27,6 +28,7 @@ specifiers:
   eslint-plugin-prettier: ^4.1.0
   eslint-plugin-vue: ^9.1.1
   husky: ^8.0.1
+  js-cookie: ^3.0.1
   koa: ^2.13.4
   koa-connect: ^2.1.0
   koa-send: ^5.0.1
@@ -50,11 +52,13 @@ specifiers:
 
 dependencies:
   '@css-render/vue3-ssr': registry.npmmirror.com/@css-render/vue3-ssr/0.15.10_vue@3.2.37
+  '@types/js-cookie': registry.npmmirror.com/@types/js-cookie/3.0.2
   '@types/qs': registry.npmmirror.com/@types/qs/6.9.7
   '@vue/server-renderer': 3.2.37_vue@3.2.37
   '@vueuse/core': registry.npmmirror.com/@vueuse/core/8.7.5_vue@3.2.37
   axios: registry.npmmirror.com/axios/0.27.2
   element-plus: registry.npmmirror.com/element-plus/2.2.6_vue@3.2.37
+  js-cookie: registry.npmmirror.com/js-cookie/3.0.1
   koa: 2.13.4
   koa-connect: 2.1.0
   koa-send: 5.0.1
@@ -1053,6 +1057,12 @@ packages:
     dependencies:
       jest-matcher-utils: registry.npmmirror.com/jest-matcher-utils/27.5.1
       pretty-format: registry.npmmirror.com/pretty-format/27.5.1
+    dev: false
+
+  registry.npmmirror.com/@types/js-cookie/3.0.2:
+    resolution: {integrity: sha512-6+0ekgfusHftJNYpihfkMu8BWdeHs9EOJuGcSofErjstGPfPGEu9yTu4t460lTzzAMl2cM5zngQJqPMHbbnvYA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/js-cookie/-/js-cookie-3.0.2.tgz}
+    name: '@types/js-cookie'
+    version: 3.0.2
     dev: false
 
   registry.npmmirror.com/@types/json-schema/7.0.11:
@@ -4337,6 +4347,13 @@ packages:
       jest-diff: registry.npmmirror.com/jest-diff/27.5.1
       jest-get-type: registry.npmmirror.com/jest-get-type/27.5.1
       pretty-format: registry.npmmirror.com/pretty-format/27.5.1
+    dev: false
+
+  registry.npmmirror.com/js-cookie/3.0.1:
+    resolution: {integrity: sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/js-cookie/-/js-cookie-3.0.1.tgz}
+    name: js-cookie
+    version: 3.0.1
+    engines: {node: '>=12'}
     dev: false
 
   registry.npmmirror.com/js-tokens/3.0.2:
