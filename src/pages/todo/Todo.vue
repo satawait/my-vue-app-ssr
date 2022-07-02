@@ -51,10 +51,11 @@ import { ref } from 'vue'
 import { FormInst, FormItemRule, useMessage, FormRules } from 'naive-ui'
 import type { UploadFileInfo } from 'naive-ui'
 import * as user from '@/apis/user'
-import router from '@/routes'
+import { useRouter } from 'vue-router'
 const size = 'large'
 const formRef = ref<FormInst | null>(null)
 const message = useMessage()
+const router = useRouter()
 interface IformValue {
   username: string
   password: string

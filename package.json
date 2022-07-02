@@ -16,6 +16,7 @@
     "build:server": "vite build --ssr src/entry-server --outDir dist/server"
   },
   "dependencies": {
+    "@css-render/vue3-ssr": "^0.15.10",
     "@types/qs": "^6.9.7",
     "@vue/server-renderer": "^3.2.37",
     "@vueuse/core": "^8.7.5",

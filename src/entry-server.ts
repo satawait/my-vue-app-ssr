@@ -1,5 +1,6 @@
 import { createApp } from './main'
 import { renderToString } from '@vue/server-renderer'
+import { setup } from '@css-render/vue3-ssr'
 import { ParameterizedContext } from 'koa'
 import createMyRouter from '@/routes'
 
@@ -13,10 +14,13 @@ export const render = async (ctx: ParameterizedContext, manifest: Record<string,
 
   // 注入vue ssr中的上下文对象
   const renderCtx: { modules?: string[] } = {}
+  // naive-ui
+  const { collect } = setup(app)
   const renderedHtml = await renderToString(app, renderCtx)
+  const cssHtml = collect()
   const preloadLinks = renderPreLoadLinks(renderCtx.modules, manifest)
 
-  return { renderedHtml, preloadLinks }
+  return { renderedHtml, preloadLinks, cssHtml }
 }
 
 const renderPreLoadLinks = (
@@ -27,11 +31,9 @@ const renderPreLoadLinks = (
   const seen = new Set()
   if (modules === undefined) throw new Error()
   modules.forEach((module) => {
-    console.log(modules, module, manifest[module])
     const files = manifest[module]
     if (files) {
       files.forEach((file) => {
-        console.log(seen, file, links)
         if (!seen.has(file)) {
           seen.add(file)
           links += renderPreLoadLink(file)

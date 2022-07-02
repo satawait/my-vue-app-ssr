@@ -19,11 +19,12 @@ const manifest = require('./dist/client/ssr-manifest.json')
       await sendFile(ctx, ctx.path, { root: clientRoot })
       return
     }
-    const { renderedHtml, preloadLinks } = await render(ctx, manifest)
-    console.log(1111, preloadLinks)
+    const { renderedHtml, preloadLinks, cssHtml } = await render(ctx, manifest)
+    console.log(1111, cssHtml)
     const html = template
       .replace('<!--app-html-->', renderedHtml)
       .replace('<!--preload-links-->', preloadLinks)
+      .replace('<!--css-outlet-->', cssHtml)
     ctx.type = 'text/html'
     ctx.body = html
   }

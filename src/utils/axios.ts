@@ -7,11 +7,16 @@ import axios, {
 } from 'axios'
 import NProgress from 'nprogress'
 import qs from 'qs'
-import router from '@/routes'
+import createMyRouter from '@/routes'
 
 const CancelToken = axios.CancelToken
 const instance = axios.create()
-console.log(router)
+let router
+if (import.meta.env.SSR) {
+  router = createMyRouter('server')
+} else {
+  router = createMyRouter('client')
+}
 
 class HttpRequest {
   private baseUrl: string
@@ -55,7 +60,10 @@ class HttpRequest {
     instance.interceptors.request.use(
       (config) => {
         NProgress.start()
-        const authorization = localStorage.getItem('authorization')
+        let authorization
+        if (!import.meta.env.SSR) {
+          authorization = localStorage.getItem('authorization')
+        }
         // if (authorization) {
         config.headers = {
           ...config.headers,
@@ -85,7 +93,9 @@ class HttpRequest {
         if (res.status === 200) {
           return Promise.resolve(res)
         } else if (res.status === 401) {
-          localStorage.removeItem('authorization')
+          if (!import.meta.env.SSR) {
+            localStorage.removeItem('authorization')
+          }
           router.push({ name: 'Login' })
         } else {
           return Promise.reject(res)

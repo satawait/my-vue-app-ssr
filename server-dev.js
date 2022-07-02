@@ -27,8 +27,10 @@ const vite = require('vite')
       // 加载服务器入口，vite.ssrLoadModule将自动转换
       const { render } = await viteServer.ssrLoadModule('/src/entry-server.ts')
       // 渲染应用的html
-      const { renderedHtml } = await render(ctx, {})
-      const html = template.replace('<!--app-html-->', renderedHtml)
+      const { renderedHtml, cssHtml } = await render(ctx, {})
+      const html = template
+        .replace('<!--app-html-->', renderedHtml)
+        .replace('<!--css-outlet-->', cssHtml)
       ctx.type = 'text/html'
       ctx.body = html
     } catch (e) {

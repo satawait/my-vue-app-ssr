@@ -38,9 +38,9 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { FormInst, FormItemRule, useMessage, FormRules } from 'naive-ui'
 import { login } from '@/apis/login'
-import { useUserStore } from '@/store/user'
+// import { useUserStore } from '@/store/user'
 const router = useRouter()
-const userStore = useUserStore()
+// const userStore = useUserStore()
 const size = 'large'
 const formRef = ref<FormInst | null>(null)
 const message = useMessage()
@@ -79,10 +79,10 @@ const loginHandler = () => {
     if (res.authorization) {
       localStorage.setItem('authorization', res.authorization)
     }
-    userStore.updateUser({
-      username: formValue.value.username,
-      password: formValue.value.password
-    })
+    // userStore.updateUser({
+    //   username: formValue.value.username,
+    //   password: formValue.value.password
+    // })
     router.replace({
       name: 'Todo'
     })

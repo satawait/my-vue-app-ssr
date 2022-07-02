@@ -18,7 +18,9 @@ const createMyRouter = (type: 'client' | 'server'): Router => {
   })
   router.beforeEach((to, from, next) => {
     let authorization
-    //   authorization = localStorage?.getItem('authorization')
+    if (!import.meta.env.SSR) {
+      authorization = localStorage?.getItem('authorization')
+    }
     if (to.name !== 'Login' && !authorization) next({ name: 'Login' })
     else next()
   })
