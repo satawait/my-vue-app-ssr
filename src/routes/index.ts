@@ -12,9 +12,9 @@ import Cookies from 'js-cookie'
 
 const routes: RouteRecordRaw[] = [...helloRoutes, ...todoRoutes, ...loginRoutes]
 
-const createMyRouter = (type: 'client' | 'server'): Router => {
+const createMyRouter = (): Router => {
   const router = createRouter({
-    history: type === 'client' ? createWebHistory() : createMemoryHistory(),
+    history: !import.meta.env.SSR ? createWebHistory() : createMemoryHistory(),
     routes
   })
   router.beforeEach((to, from, next) => {
@@ -33,4 +33,4 @@ const createMyRouter = (type: 'client' | 'server'): Router => {
   return router
 }
 
-export default createMyRouter
+export default createMyRouter()

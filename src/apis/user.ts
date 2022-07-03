@@ -8,14 +8,14 @@ export const registerUser = (user: IUser) => {
   if (user.file) {
     formsData.append('file', user.file)
   }
-  return request.upload<IRes>('api/users/api/upload', formsData)
+  return request.upload<IRes>('users/api/upload', formsData)
 }
 export const updateUser = (user: IUser) => {
-  return request.put<IRes>('api/users/api', user)
+  return request.put<IRes>('users/api', user)
 }
 export const deleteUser = (user: IUser) => {
-  return request.delete<IRes>('api/users/api', user)
+  return request.delete<IRes>('users/api', user)
 }
 export const getUser = (user: IUser) => {
-  return request.get<IRes>(`api/users/api`, user)
+  return request.get<IRes>(`users/api`, user)
 }

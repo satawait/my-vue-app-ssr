@@ -2,14 +2,13 @@ import { createApp } from './main'
 import { renderToString } from '@vue/server-renderer'
 import { setup } from '@css-render/vue3-ssr'
 import { ParameterizedContext } from 'koa'
-import createMyRouter from '@/routes'
+import router from '@/routes'
 import createStore from '@/store'
 
 export const render = async (ctx: ParameterizedContext, manifest: Record<string, string[]>) => {
   const { app } = createApp() // 路由注册
 
   global.__VUE_SSR_COOKIE__ = ctx.cookies.get('authorization')
-  const router = createMyRouter('server')
   app.use(router)
   await router.push(ctx.path)
   await router.isReady()

@@ -7,17 +7,11 @@ import axios, {
 } from 'axios'
 import NProgress from 'nprogress'
 import qs from 'qs'
-import createMyRouter from '@/routes'
+import router from '@/routes'
 import Cookies from 'js-cookie'
 
 const CancelToken = axios.CancelToken
 const instance = axios.create()
-let router
-if (import.meta.env.SSR) {
-  router = createMyRouter('server')
-} else {
-  router = createMyRouter('client')
-}
 
 class HttpRequest {
   private baseUrl: string
@@ -60,7 +54,7 @@ class HttpRequest {
   interceptors(instance: AxiosInstance) {
     instance.interceptors.request.use(
       (config) => {
-        NProgress.start()
+        !import.meta.env.SSR && NProgress.start()
         let authorization
         if (!import.meta.env.SSR) {
           authorization = localStorage.getItem('authorization')
@@ -87,8 +81,8 @@ class HttpRequest {
     // 响应请求的拦截器
     instance.interceptors.response.use(
       (res) => {
-        console.log(res)
-        NProgress.done()
+        // console.log(res)
+        !import.meta.env.SSR && NProgress.done()
         const key = res.config.url + '&' + res.config.method
         this.removePending(key)
         if (res.status === 200) {

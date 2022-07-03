@@ -109,7 +109,7 @@ const handlerObj = {
     }
   },
   deleteUser: () => {
-    return user.registerUser({
+    return user.deleteUser({
       username: formValue.value.username,
       password: formValue.value.password
     })

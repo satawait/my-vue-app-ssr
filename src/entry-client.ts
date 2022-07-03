@@ -1,9 +1,7 @@
 import { createApp } from './main'
-import createMyRouter from '@/routes'
+import router from '@/routes'
 import createStore from '@/store'
 const pinia = createStore()
-
-const router = createMyRouter('client')
 const { app } = createApp()
 
 app.use(router)
