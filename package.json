@@ -3,17 +3,17 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "nodemon server-dev",
-    "prod": "nodemon server-prod",
+    "dev": "npx nodemon server-dev",
+    "prod": "node server-prod",
     "preview": "vite preview",
     "lint": "eslint src/**/*.{js,jsx,vue,ts,tsx}",
     "fix": "eslint src/**/*.{js,jsx,vue,ts,tsx} --fix",
     "prettier": "prettier --write .",
     "prepare": "husky install",
     "commit": "git-cz",
-    "build": "pnpm build:client && pnpm build:server",
-    "build:client": "vite build --ssrManifest --outDir dist/client",
-    "build:server": "vite build --ssr src/entry-server --outDir dist/server"
+    "build": "npx pnpm build:client && npx pnpm build:server",
+    "build:client": "npx vite build --ssrManifest --outDir dist/client",
+    "build:server": "npx vite build --ssr src/entry-server --outDir dist/server"
   },
   "dependencies": {
     "@css-render/vue3-ssr": "^0.15.10",

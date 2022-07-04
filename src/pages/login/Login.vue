@@ -100,13 +100,6 @@ const handleLoginClick = (e: MouseEvent) => {
     }
   })
 }
-login(formValue.value)
-  .then((res) => {
-    console.log(res)
-  })
-  .catch((e) => {
-    console.log(e)
-  })
 </script>
 
 <style scoped lang="scss">

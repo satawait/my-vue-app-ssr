@@ -1,0 +1,20 @@
+version: "3"
+services:
+  node-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.static
+    ports:
+      - 9009:9009
+    labels:
+      # 为 cra 配置我们的自定义域名
+      - "traefik.http.routers.cra.rule=Host(`ssr.vue.local`)"
+      # 设置 https，此时我们的 certresolver 为 le，与上篇文章配置保持一致
+      - traefik.http.routers.cra.tls=true
+      - traefik.http.routers.cra.tls.certresolver=le
+    networks:
+      - default
+networks:
+  default:
+    external:
+      name: my-app_default
