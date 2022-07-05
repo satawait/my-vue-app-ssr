@@ -15,7 +15,7 @@ const manifest = require('./dist/client/ssr-manifest.json')
   const app = new Koa()
 
   const renderFunc = async (ctx) => {
-    if (ctx.path.startsWith('/assets')) {
+    if (ctx.path.startsWith('/assets') || ctx.path.includes('favicon')) {
       await sendFile(ctx, ctx.path, { root: clientRoot })
       return
     }
