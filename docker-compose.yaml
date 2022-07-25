@@ -1,6 +1,7 @@
 version: "3"
 services:
   node-app:
+    container_name: 'ssrWeb'
     build:
       context: .
       dockerfile: Dockerfile.static
