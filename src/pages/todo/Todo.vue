@@ -53,7 +53,7 @@ import type { UploadFileInfo } from 'naive-ui'
 import * as user from '@/apis/user'
 import { useRouter } from 'vue-router'
 import Cookies from 'js-cookie'
-const size = 'large'
+const size = ref<'small' | 'medium' | 'large'>('large')
 const formRef = ref<FormInst | null>(null)
 const message = useMessage()
 const router = useRouter()
